@@ -1,0 +1,41 @@
+.bg{
+    background: red;
+}
+.loginCont{
+
+    height: 100vh;
+
+    .logoBox{
+
+        position: fixed;
+
+        .logo{
+            height: 30px;
+            width: 120px;
+            margin-left: 50px;
+            margin-top: 50px;
+        }
+    }
+
+    .leftSide{
+        background: #F8F0EE url('../../assets/image/team-work.jpg') no-repeat center;
+        background-size: 100% 150%;
+        background-size: cover;
+       
+    }
+
+    .rightSide{
+        padding: 20px; 
+        margin: auto;
+
+        @media (min-width: 960px) {
+            padding-left: 10%;
+        }
+
+        .loginButton{
+            margin-top: 30px;
+            margin-bottom: 50px;
+            margin-left: 40px;
+        }
+    }
+}

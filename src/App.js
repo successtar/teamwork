@@ -1,26 +1,57 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Switch, Route,Redirect } from 'react-router-dom';
+import Auth from './containers/Auth'
+import Feed from './containers/Feed'
+import { connect } from 'react-redux';
 
-function App() {
+
+
+const App = (props) => {
+
+  /* Confirm user is authenticated */
+  
+  if (props.userAuth === false) {
+
+    //return <Auth/>;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+          <div className="">
+            <BrowserRouter basename='teamwork'>
+              {
+                (props.userAuth === false) ?
+                <Auth/>
+                :
+              <div style={{ marginTop: '2rem' }}>
+                <Switch>
+                  <Route path='/' component={Feed} />
+                </Switch>
+              </div>
 
-export default App;
+              }
+            </BrowserRouter>
+          </div>
+        );
+}
+/*
+
+
+            <Route path='/dashboard' component={Dashboard} />
+            <Route path='/login' component={LoginPage} />
+            <Route path='/signup' component={SignupPage} />
+
+            */
+
+const mapStateToProps = state => {
+
+      return {
+        ...state
+      }
+  };
+  
+  const mapDispatchToProps = dispatch => {
+      return {
+      }
+  };
+        
+export default connect(mapStateToProps, mapDispatchToProps)(App);
